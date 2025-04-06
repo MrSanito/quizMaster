@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client"; // Add this at the top of the file
 import { FaCheckCircle, FaFire, FaStar, FaTrophy } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
@@ -6,7 +7,7 @@ const CategoryQuizzes = () => {
   const categories = [
     { name: "Geography", quizzes: 3, color: "bg-blue-500", icon: "🌐" },
     { name: "Science", quizzes: 2, color: "bg-green-500", icon: "⚗️" },
-    { name: "Movies & TV", quizzes: 2, color: "bg-red-500", icon: "🎥" },
+    { name: "Movies &amp; TV", quizzes: 2, color: "bg-red-500", icon: "🎥" },
     { name: "Music", quizzes: 2, color: "bg-purple-500", icon: "🎵" },
     { name: "History", quizzes: 2, color: "bg-yellow-500", icon: "📚" },
     { name: "Sports", quizzes: 2, color: "bg-green-600", icon: "⚽" },
@@ -96,11 +97,12 @@ const CategoryQuizzes = () => {
           <div className="space-y-3">
             <h2 className="text-lg font-semibold">Daily Quiz Challenge</h2>
             <h3 className="text-md font-bold">
-              Today's Topic: Science & Nature
+              {"Today's Topic: Science & Nature"}
             </h3>
             <p className="text-sm text-gray-600">
-              Test your knowledge in today&apos;s quiz about Earth&apos;s
-              atmosphere and environmental science.
+              {
+                "Test your knowledge in today's quiz about Earth's atmosphere and environmental science."
+              }
             </p>
             <div className="flex justify-start space-x-4 mt-3">
               <p className="text-sm">
