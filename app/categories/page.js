@@ -1,35 +1,40 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
-// 📝 Fetch categories from API
-async function getCategories() {
-  try {
-    // ✅ Use relative path for internal API
-    const res = await fetch(
-      `${
-        process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
-      }/api/categories`,
-      {
-        cache: "no-store",
-      }
-    );
-
-    if (!res.ok) {
-      throw new Error(`Failed to fetch categories, status: ${res.status}`);
-    }
-
-    const categories = await res.json();
-    console.log("✅ Fetched Categories:", categories);
-    return categories;
-  } catch (error) {
-    console.error("❌ Error fetching categories:", error.message);
-    return [];
-  }
-}
-
 // 🎯 Main Categories Page
-export default async function CategoriesPage() {
-  const categories = await getCategories();
+export default function CategoriesPage() {
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        // Use a relative URL instead of an absolute one
+        const response = await fetch("/api/categories");
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Categories data:", data);
+        setCategories(data);
+      } catch (error) {
+        console.error("❌ Error fetching categories:", error);
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 p-4">
