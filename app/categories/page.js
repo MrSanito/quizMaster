@@ -6,7 +6,9 @@ async function getCategories() {
   try {
     // ✅ Use relative path for internal API
     const res = await fetch(
-      `${process.env.NEXTAUTH_URL || "http://localhost:3000"}/api/categories`,
+      `${
+        process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
+      }/api/categories`,
       {
         cache: "no-store",
       }
