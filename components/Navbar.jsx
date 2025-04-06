@@ -77,7 +77,7 @@ const Navbar = () => {
           Home
         </Link>
         <Link
-          href="/Categories"
+          href="/categories"
           className="btn btn-ghost text-lg hover:text-primary hover:bg-base-300"
         >
           Categories
