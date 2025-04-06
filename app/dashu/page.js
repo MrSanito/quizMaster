@@ -99,8 +99,8 @@ const CategoryQuizzes = () => {
               Today's Topic: Science & Nature
             </h3>
             <p className="text-sm text-gray-600">
-              Test your knowledge in today’s quiz about Earth’s atmosphere and
-              environmental science.
+              Test your knowledge in today&apos;s quiz about Earth&apos;s
+              atmosphere and environmental science.
             </p>
             <div className="flex justify-start space-x-4 mt-3">
               <p className="text-sm">
